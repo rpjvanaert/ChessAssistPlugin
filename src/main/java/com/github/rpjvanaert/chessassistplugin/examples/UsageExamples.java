@@ -3,6 +3,7 @@ package com.github.rpjvanaert.chessassistplugin.examples;
 import com.github.rpjvanaert.chessassistplugin.core.*;
 import com.github.rpjvanaert.chessassistplugin.detector.*;
 import com.github.rpjvanaert.chessassistplugin.editor.*;
+import com.github.rpjvanaert.chessassistplugin.editor.FenEditor;
 import com.github.rpjvanaert.chessassistplugin.generator.*;
 import com.github.rpjvanaert.chessassistplugin.viewer.*;
 

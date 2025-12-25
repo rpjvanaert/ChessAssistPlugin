@@ -46,8 +46,20 @@ public class FenDetectorImpl implements FenDetector {
             boolean isValid = validator.isValid(fenString);
             
             detections.add(new FenDetection(fenString, startIndex, endIndex, isValid));
+
+            // Call editFen when a valid FEN is detected
+            if (isValid) {
+                editFen(fenString);
+            }
         }
         
         return detections;
+    }
+
+    // Add a method to trigger the FEN editor popup
+    public void editFen(String fen) {
+        // Placeholder for the popup logic
+        System.out.println("Editing FEN: " + fen);
+        // TODO: Implement the actual popup with a chessboard visualization
     }
 }

@@ -1,5 +1,6 @@
 plugins {
     id 'java'
+    id 'org.jetbrains.intellij' version '1.17.2'
 }
 
 group 'com.github.rpjvanaert'
@@ -7,6 +8,13 @@ version '1.0.0'
 
 repositories {
     mavenCentral()
+}
+
+// Configure IntelliJ Platform Plugin
+intellij {
+    version = '2023.2.5'
+    type = 'IC' // IntelliJ IDEA Community Edition
+    plugins = []
 }
 
 dependencies {
@@ -24,6 +32,13 @@ tasks.withType(JavaCompile) {
     targetCompatibility = '17'
 }
 
-// Plugin configuration (can be enabled when IntelliJ plugin compatibility is resolved)
-// To build as IntelliJ plugin, add: id 'org.jetbrains.intellij' version '<compatible-version>'
+// Disable building searchable options to speed up build
+tasks.named('buildSearchableOptions') {
+    enabled = false
+}
+
+patchPluginXml {
+    sinceBuild = '232'
+    untilBuild = '252.*'
+}
 

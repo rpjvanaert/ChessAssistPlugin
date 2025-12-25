@@ -2,7 +2,40 @@
 
 ## Installation & Setup
 
-### Build from Source
+### Option 1: Install Plugin Locally for Testing
+
+#### Step 1: Build the Plugin
+```bash
+git clone https://github.com/rpjvanaert/ChessAssistPlugin.git
+cd ChessAssistPlugin
+./gradlew buildPlugin
+```
+
+This will create a plugin distribution ZIP file in `build/distributions/`.
+
+#### Step 2: Install in IntelliJ IDEA
+
+**Method A: Install from Disk**
+1. Open IntelliJ IDEA
+2. Go to `File > Settings` (or `IntelliJ IDEA > Preferences` on macOS)
+3. Navigate to `Plugins`
+4. Click the ⚙️ (gear) icon
+5. Select `Install Plugin from Disk...`
+6. Browse to `build/distributions/ChessAssistPlugin-1.0.0.zip`
+7. Click `OK` and restart IntelliJ IDEA
+
+**Method B: Run in Development Mode**
+```bash
+./gradlew runIde
+```
+This will launch a new IntelliJ IDEA instance with your plugin pre-installed for testing.
+
+#### Step 3: Verify Installation
+1. After restart, go to `File > Settings > Plugins`
+2. Look for "Chess Assist Plugin" in the installed plugins list
+3. The plugin should be enabled
+
+### Option 2: Build from Source (Library Mode)
 ```bash
 git clone https://github.com/rpjvanaert/ChessAssistPlugin.git
 cd ChessAssistPlugin
@@ -209,6 +242,9 @@ class MyTest {
 
 # Refresh dependencies
 ./gradlew build --refresh-dependencies
+
+# Clean plugin build
+./gradlew clean buildPlugin
 ```
 
 ### Test Failures
@@ -218,6 +254,50 @@ class MyTest {
 
 # Run with stack trace
 ./gradlew test --stacktrace
+```
+
+### Plugin Development & Debugging
+
+#### Available Gradle Tasks for Plugin Development
+```bash
+# Build the plugin distribution
+./gradlew buildPlugin
+
+# Run IntelliJ with the plugin in development mode
+./gradlew runIde
+
+# Run plugin verifier (checks compatibility)
+./gradlew runPluginVerifier
+
+# Build and verify the plugin
+./gradlew verifyPlugin
+
+# Clean plugin artifacts
+./gradlew clean
+```
+
+#### Debug the Plugin
+1. Run: `./gradlew runIde --debug-jvm`
+2. In your main IntelliJ IDEA, create a Remote JVM Debug configuration:
+   - Host: `localhost`
+   - Port: `5005`
+3. Set breakpoints in your plugin code
+4. Start the debug configuration
+
+#### Hot Reload During Development
+After making changes:
+```bash
+# Rebuild and run
+./gradlew clean buildPlugin runIde
+```
+
+#### Check Plugin Structure
+```bash
+# Verify plugin.xml and structure
+./gradlew verifyPlugin
+
+# View plugin structure
+unzip -l build/distributions/ChessAssistPlugin-1.0.0.zip
 ```
 
 ## Next Steps

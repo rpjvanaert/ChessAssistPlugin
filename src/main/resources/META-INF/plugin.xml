@@ -1,0 +1,26 @@
+<idea-plugin>
+    <id>com.github.rpjvanaert.chessassistplugin</id>
+    <name>Chess Assist Plugin</name>
+    <vendor email="support@example.com" url="https://github.com/rpjvanaert/ChessAssistPlugin">rpjvanaert</vendor>
+
+    <description><![CDATA[
+    A modular IntelliJ IDEA plugin for working with chess FEN (Forsyth-Edwards Notation) strings.
+    
+    Features:
+    - Detect FEN strings in your code
+    - Validate FEN syntax
+    - View chess positions from FEN
+    - Edit and create FEN strings
+    - Comprehensive FEN parsing and generation
+    ]]></description>
+
+    <depends>com.intellij.modules.platform</depends>
+
+    <extensions defaultExtensionNs="com.intellij">
+        <!-- Extension points will be added here as needed -->
+    </extensions>
+
+    <actions>
+        <!-- Actions will be added here as needed -->
+    </actions>
+</idea-plugin>

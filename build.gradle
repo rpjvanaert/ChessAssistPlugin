@@ -1,0 +1,44 @@
+plugins {
+    id 'java'
+    id 'org.jetbrains.intellij' version '1.17.2'
+}
+
+group 'com.github.rpjvanaert'
+version '1.0.0'
+
+repositories {
+    mavenCentral()
+}
+
+// Configure IntelliJ Platform Plugin
+intellij {
+    version = '2023.2.5'
+    type = 'IC' // IntelliJ IDEA Community Edition
+    plugins = []
+}
+
+dependencies {
+    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.9.3'
+    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.9.3'
+    testImplementation 'org.mockito:mockito-core:5.3.1'
+}
+
+tasks.withType(Test) {
+    useJUnitPlatform()
+}
+
+tasks.withType(JavaCompile) {
+    sourceCompatibility = '17'
+    targetCompatibility = '17'
+}
+
+// Disable building searchable options to speed up build
+tasks.named('buildSearchableOptions') {
+    enabled = false
+}
+
+patchPluginXml {
+    sinceBuild = '232'
+    untilBuild = '252.*'
+}
+
